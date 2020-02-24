@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class AuthenticationFilter
  */
-@WebFilter(urlPatterns = { "/user/*", "/images/*", "albums/add", "albums/delete"}, description = "Filtre de contrôle d'acces aux fonctionnalités nécessitant une authentification.")
+@WebFilter(urlPatterns = { "/user/*", "/images/*", "/albums/add", "/albums/delete"}, description = "Filtre de contrôle d'acces aux fonctionnalités nécessitant une authentification.")
 public class AuthenticationFilter implements Filter
 {
 

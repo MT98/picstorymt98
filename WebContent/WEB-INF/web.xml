@@ -10,4 +10,38 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>accueil.jsp</welcome-file>
   </welcome-file-list>
+  <filter>
+  	<filter-name>AuthenticationFilter</filter-name>
+  	<filter-class>filter.AuthenticationFilter</filter-class>
+  </filter>
+  <filter>
+  	<filter-name>RightFilter</filter-name>
+  	<filter-class>filter.RightFilter</filter-class>
+  </filter>
+  <filter>
+  	<filter-name>NotAdminFilter</filter-name>
+  	<filter-class>filter.NotAdminFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>AuthenticationFilter</filter-name>
+  	<url-pattern>/user/*</url-pattern>
+  	<url-pattern>/images/*</url-pattern>
+  	<url-pattern>/albums/add</url-pattern>
+  	<url-pattern>/albums/delete</url-pattern>
+ 
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>RightFilter</filter-name>
+  	<url-pattern>/user/profil</url-pattern>
+  	<url-pattern>/albums/add</url-pattern>
+  	<url-pattern>/albums/delete</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>NotAdminFilter</filter-name>
+  	<url-pattern>/user/list</url-pattern>
+  	<url-pattern>/user/add</url-pattern>
+  	<url-pattern>/user/delete</url-pattern>
+  	<url-pattern>/user/view</url-pattern>
+  	<url-pattern>/user/modify</url-pattern>
+  </filter-mapping>
 </web-app>

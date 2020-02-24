@@ -21,7 +21,7 @@ import service.ServiceException;
 /**
  * Servlet Filter implementation class NotAdminFilter
  */
-@WebFilter(urlPatterns = {"user/profil", "albums/add", "albums/delete"}, description = "Filtre de contrôle d'acces aux fonctionnalités nécessitant d'avoir les droits.")
+@WebFilter(urlPatterns = {"/user/profil", "/albums/add", "/albums/delete"}, description = "Filtre de contrôle d'acces aux fonctionnalités nécessitant d'avoir les droits.")
 public class RightFilter implements Filter {
 
     /**
@@ -49,7 +49,7 @@ public class RightFilter implements Filter {
 		HttpSession session = httpRequest.getSession();
 	
 		String uri = httpRequest.getRequestURI();
-		if(uri.endsWith("user/profil"))
+		if(uri.endsWith("/user/profil"))
 		{
 			if(session != null &&  session.getAttribute("utilisateur") != null  &&  ((Utilisateur)session.getAttribute("utilisateur")).getId() != Long.parseLong(request.getParameter("id")) )
 			{
@@ -59,7 +59,7 @@ public class RightFilter implements Filter {
 				// pass the request along the filter chain
 				chain.doFilter(request, response);
 			}
-		}else if(uri.endsWith("albums/add") || uri.endsWith("albums/delete"))
+		}else if(uri.endsWith("/albums/add") || uri.endsWith("/albums/delete"))
 		{
 			AlbumService as = new AlbumService();
 			if(session != null &&  session.getAttribute("utilisateur") != null)				
