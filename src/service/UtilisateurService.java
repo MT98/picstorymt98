@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import javax.persistence.Query;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -14,11 +15,11 @@ import javax.persistence.PersistenceContext;
 import entities.Utilisateur;
 
 
-
+@Stateless
 public class UtilisateurService {
 	
 
-	@PersistenceContext(name="picstories")
+	@PersistenceContext(unitName = "picstories_PU")
 	private EntityManager em ;
 	
 	public Utilisateur createUser(Utilisateur utilisateur) throws ServiceException

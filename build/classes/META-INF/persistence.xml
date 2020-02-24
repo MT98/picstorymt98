@@ -3,13 +3,10 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
  http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-    <persistence-unit name="picstories" transaction-type="JTA">
-        <jta-data-source>jdbc/__picstories</jta-data-source>
+	<persistence-unit name="picstories_PU" transaction-type="JTA">
+        <jta-data-source>jdbc/bonecp_resource</jta-data-source>
         <class>entities.Utilisateur</class>
-        <properties>
-        	<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
-        
-        </properties>		
-    </persistence-unit>   
+        <properties/>		
+    </persistence-unit> 
 </persistence>
  
