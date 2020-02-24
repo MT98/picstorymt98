@@ -51,7 +51,7 @@ public class RightFilter implements Filter {
 		String uri = httpRequest.getRequestURI();
 		if(uri.endsWith("user/profil"))
 		{
-			if(session != null &&  session.getAttribute("utilisateur") != null && ((Utilisateur)session.getAttribute("utilisateur")).getIsAdmin() == false &&  ((Utilisateur)session.getAttribute("utilisateur")).getId() != Long.parseLong(request.getParameter("id")) )
+			if(session != null &&  session.getAttribute("utilisateur") != null  &&  ((Utilisateur)session.getAttribute("utilisateur")).getId() != Long.parseLong(request.getParameter("id")) )
 			{
 				((HttpServletResponse)response).sendRedirect(httpRequest.getContextPath() + Constantes.LIEN_PAGE_ERROR + "?errorMessage=Vous ne disposez pas assez de droit pour acceder a cette page!");
 			}else
