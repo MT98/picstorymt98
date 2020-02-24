@@ -38,21 +38,47 @@ public class UtilisateurService {
 	
 	public Utilisateur updateUser(Utilisateur utilisateur)	throws ServiceException
 	{
-		this.em.merge(utilisateur);
-		return utilisateur;
+		try
+		{
+			this.em.merge(utilisateur);
+			return utilisateur;
+		}catch(Exception ex)
+		{
+			String message = ex.getMessage();
+			throw new ServiceException("Echec de modification!");
+		}
+		
 	}
 	
 	public Utilisateur deleteUser(Utilisateur utilisateur ) throws ServiceException
 	{
-		this.em.remove(utilisateur);
-		return utilisateur;
+		try
+		{
+			this.em.remove(utilisateur);
+			return utilisateur;
+		}catch(Exception ex)
+		{
+			String message = ex.getMessage();
+			throw new ServiceException("Echec de suppression!");
+		}
+		
+		
 	}
 	
 	public List<Utilisateur> getUsers() throws ServiceException
 	{
-		Query query= this.em.createQuery("FROM Utilisateur");
-		List<Utilisateur> listUsers= query.getResultList();
-		return listUsers;
+		try
+		{
+			Query query= this.em.createQuery("SELECT u FROM Utilisateur");
+			List<Utilisateur> listUsers= query.getResultList();
+			return listUsers;
+			
+		}catch(Exception ex)
+		{
+			String message = ex.getMessage();
+			throw new ServiceException("Echec de suppression!");
+		}
+		
 	}
 	
 	public Utilisateur getUserById(Long id) throws ServiceException
